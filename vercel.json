@@ -4,7 +4,7 @@
     {
       "src": "alibak/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "150mb", "runtime": "python3.11.1" }
+      "config": { "maxLambdaSize": "200mb", "runtime": "python3.11.1" }
     },
     {
       "src": "build_files.sh",
