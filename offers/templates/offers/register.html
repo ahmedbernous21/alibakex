@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>register</title>
+  {% load static %}
+    <link rel="icon" type="image/png" href="images/bg.png">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static '/website/style.css' %}">
+</head>
+<body>
+<div class="rapper">
+  <div class="login-box">
+    <h3 class="info-text">User Registration</h3>
+    <form class="form-container" method="POST" action="">
+      {% csrf_token %}
+      <div class="input-addon">
+       {{form.username}}
+        <button class="input-addon-item">
+          <span class="fa fa-user"></span>
+        </button>
+
+      </div>
+      <div class="input-addon">
+      {{form.email}}
+        <button class="input-addon-item">
+          <span class="fa fa-envelope"></span>
+        </button>
+      </div>
+      <div class="input-addon">
+        {{form.password1}}
+        <button class="input-addon-item">
+          <span class="fa fa-lock"></span>
+        </button>
+      </div>
+      <div class="input-addon">
+         {{form.password2}}
+        <button class="input-addon-item">
+          <span class="fa fa-lock"></span>
+        </button>
+      </div>
+      <input class="form-element is-submit" type="submit" value="Create User">
+      <div style="font-size:10px;margin-top:1rem;">{{form.errors}}</div>
+    </form>
+    <p>Or if you already have a user <a href="{% url 'login'%}">login here.</a></p>
+  </div>
+</div>
+<script>
+		//Query All input fields
+		var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder='Username..';
+		form_fields[2].placeholder='Email..';
+		form_fields[3].placeholder='Enter password...';
+		form_fields[4].placeholder='Re-enter Password...';
+
+
+		for (var field in form_fields){
+			form_fields[field].className += ' form-control'
+		}
+	</script>
+</body>
+</html>

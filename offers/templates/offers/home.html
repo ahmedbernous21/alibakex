@@ -1,0 +1,99 @@
+{%  extends 'offers/main.html' %}
+{% block content %}
+
+
+ <section id="flex-section">
+
+            <div class="side-menu">
+                    <div class="my-brand-name">
+                        <h2>Invester</h2>
+                        <h2>Acheter. Vendre</h2>
+                        <h6>Pour faciliter votre transactions !</h6>
+                    </div>
+
+                    <div class="myDiv">
+                            <a href="{% url 'OffersPage' %}" class="btn button1"><b>BUY</b></a> <br>
+                            <a href="{% url 'OffersPage' %}" class="btn button2"><b>SELL</b></a>
+                    </div>
+
+
+
+
+            </div>
+
+            <div class="container">
+                <div class="row159">
+                         <div >
+                            <table class="table table-bordered table-striped myTable">
+                                <thead>
+                                    <th> # </th>
+                                    <th> Name </th>
+                                    <th> Price </th>
+                                    <th> 1h % </th>
+                                    <th> 24h % </th>
+                                    <th> Market Cap </th>
+                                    <th> Volume (24h) </th>
+                                    <th> Circulating Supply </th>
+                                    <th> Last 7 days </th>
+                                </thead>
+                                <tbody id="myTable">
+
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Bitcoin</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td>5</td>
+                                                <td>6</td>
+                                                <td>7</td>
+                                                <td>8</td>
+                                                <td>9</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Euro</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td>5</td>
+                                                <td>6</td>
+                                                <td>7</td>
+                                                <td>8</td>
+                                                <td>9</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Pound</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td>5</td>
+                                                <td>6</td>
+                                                <td>7</td>
+                                                <td>8</td>
+                                                <td>9</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Dollar</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td>5</td>
+                                                <td>6</td>
+                                                <td>7</td>
+                                                <td>8</td>
+                                                <td>9</td>
+                                            </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="under-table">{{ bitcoin_price|floatformat:2 }} &nbsp &nbsp &nbsp<font color="red">ALIBAK</font>.<font color="BLUE">EX</font>&nbsp&nbsp&nbsp<div class="arb"> بيع و شراء بكل أمان في منصة </div>  </p>
+
+                    </div>
+            </div>
+        </section>
+
+
+
+
+
+{% endblock %}

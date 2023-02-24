@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>offers</title>
+</head>
+<style>
+.sure{
+margin-left:2%
+}
+.sur{
+margin-top:2%
+}
+</style>
+<body>
+{% include 'offers/navbar.html' %}
+<div class="sur">
+<p class="sure">are u sure u want to delete this offer ?</p>
+<form class="sure" action="{% url 'delete_order' offer.id %}" method="POST">
+  {% csrf_token %}
+  <a href="{% url 'welcome'%}">Cancel</a>
+  <input class="" type="submit" name="confirm">
+</form>
+</div>
+</body>
+</html>

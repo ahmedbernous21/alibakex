@@ -1,0 +1,100 @@
+
+{%  extends 'offers/main2.html' %}
+{% block content %}
+{% load static %}
+
+</style>
+<section id="flex-section" >
+
+            <div class="container">
+                    <div class="my-brand-name">
+                        <h2 style="font-size: 42px;">Achat et Vente - ALIBAK</h2>
+                    </div>
+                    <br>
+
+                    <div class="row159">
+                      <div class="column159">
+                        <figure class="image-container">
+                            <img src="{% static 'images/global (1).png' %}" alt="Image">
+
+                          </figure>
+                          <p class="image-caption">All({{count}})</p>
+                      </div>
+                      <div class="column159">
+                        <figure class="image-container">
+                            <img src="{% static 'images/tag.png' %}" alt="Image">
+
+                          </figure>
+                          <p class="image-caption">Vente({{sell}})</p>
+                      </div>
+                      <div class="column159">
+                        <figure class="image-container">
+                            <img src="{% static 'images/cart.png' %}" alt="Image">
+
+                          </figure>
+                          <p class="image-caption">achat({{buy}})</p>
+                      </div>
+                      <div class="column159">
+                        <figure class="image-container">
+                            <img src="{% static 'images/coming-soon.png' %}" alt="Image">
+
+                          </figure>
+                          <p class="image-caption"></p>
+                      </div>
+                    </div>
+                    <br>
+
+
+
+             </div>
+        </section>
+
+        <section class="bottom" style="width: 80%;">
+    <div class="myflex">
+                    <form method="get" style="margin-left:14%">
+                        {% csrf_token %}
+                        <p class=" s1"  style="margin-top: 30px; font-size: 25px;" ><p style="margin-left:12%">{{filter.form.status}}</p>
+                        <input style="margin-left:12%;margin-bottom:3%;" type="submit" name="submit"></p>
+                    </form>
+            <div class="create" style="margin-bottom:-30px; margin-top:10px;">
+                        {% if request.user.customer.approved %}
+                        <a href="{% url 'create_order' %}" class="btn buttonnn" style="background-color:rgb(26, 26, 255);">Créer un offre</a>
+                {% else %} <a href="{% url 'auth' %}" style="text-decoration: none" class="c-button c-button--gooey"> Créer un offre</a>
+                         {% endif %}
+                          <div class="c-button__blobs">
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          </div>
+                        </a>
+                        <svg style="display: block; height: 0; width: 0;" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                          <defs>
+                            <filter id="goo">
+                              <feGaussianBlur result="blur" stdDeviation="10" in="SourceGraphic"></feGaussianBlur>
+                              <feColorMatrix result="goo" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" mode="matrix" in="blur"></feColorMatrix>
+                              <feBlend in2="goo" in="SourceGraphic"></feBlend>
+                            </filter>
+                          </defs>
+                        </svg>
+                </div>
+            </div>
+             <form method="get">
+    </form>
+            {% for offer in offers %}
+            {% if offer.approve %}
+                       <table class="table  table-striped t1">
+                                        <tr class="tr">
+                                            <td class="td-1"> <font class="td-1-1 td-1-1-1" color="blue">ALIBAK</font>.<font class="td-1-1" color="red">EX</font> <br> {% if offer.status == "Sell" %} (Achat) {% elif offer.status == "buy" %} (Vente) {% endif %} <br>{{offer.created_at}} </td>
+
+                                            <td class="td-2"> Devise: {{offer.devise}} <br> Paiment: {{offer.payment}} <br> <font color="pink" class="dropdown-toggle">more info</font> </td>
+
+                                            <td class="td-3"> limit :  {{offer.lowest|floatformat:0}} {% if offer.devise != "baridimob" %} &euro; {% else %} da {% endif %} <br> <br> quantity : {{offer.quantity|floatformat:0}} {% if offer.devise != "baridimob" %} &euro; {% else %} da {% endif %}  </td>
+
+                                            <td class="td-4"> <br> <p >{{offer.price|floatformat:0}} {% if offer.devise != "baridimob" %} da {% else %} &euro; {% endif %} &nbsp&nbsp&nbsp {% if offer.status == "Sell" %} <a href="{% url 'CustomerInfo' offer.id %}" class="btn buttonn" style="background-color:red;">{{offer.status}}</a> {% elif offer.status == "buy" %} <a href="{% url 'CustomerInfo' offer.id %}" class="btn buttonn" style="background-color:green;">{{offer.status}}</a></p> {%endif%} </td>
+                                        </tr>
+
+                        </table>
+            {%endif%}
+            {% endfor %}
+        </section>
+ {% endblock %}

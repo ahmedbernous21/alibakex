@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alibak</title>
+    <link rel="stylesheet" href="{% static 'website/style.css' %}">
+</head>
+<body>
+<h1>Welcome to the best platform</h1>
+<ul>
+    <form method="get">
+        {{myFilter.form}}
+        <button class="btn btn-primary" type="submit">submit</button>
+    </form>
+{% for x in offers %}
+    {% if x.approve %}
+    <li>
+        <a href="{% url 'detail' x.id %}">{{x.title}}</a>
+        <a href="{% url 'update_order' x.id %}">update</a>
+        <a href="{% url 'delete_order' x.id %}">delete</a>
+    </li>
+    {% endif %}
+{% endfor %}
+</ul>
+<a href="{% url 'create_order' %}">create</a>
+<a href="{% url 'logout' %}">Log out</a>
+</body>
+</html>

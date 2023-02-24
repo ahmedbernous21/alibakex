@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>offers</title>
+</head>
+<body>
+  <form method="post">
+    <table style="padding:25px;margin:1em">
+     <div style="padding:25px;"> title {{ form.title }}</div>
+        <div style="padding:25px;"> date {{ form.date }}</div>
+      <div style="padding:25px;"> price {{ form.price }}</div>
+      <div style="padding:25px;"> devisse {{ form.devise }}</div>
+      <div style="padding:25px;" >status {{ form.status }}</div>
+    </table>
+      <input type="submit" name="submit"></input>
+       {% csrf_token %}
+  </form>
+</body>
+</html>
