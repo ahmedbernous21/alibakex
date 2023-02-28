@@ -1464,7 +1464,7 @@ transform: scale(1.1)
             </div>
 
             <div class="d2 d-inline-flex align-items-center" >
-                    <a class="text-body mr-3" href="{% url 'OffersPage'%}">Offres</a>
+                    <a class="text-body mr-3" href="{% url 'OffersPage'  %}">Offres</a>
                     {% if request.user.customer.approved %}
                     <a class="text-body mr-3" href="{% url 'my_offers'%}">Tes offres</a>
                     {% else %}

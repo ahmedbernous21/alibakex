@@ -15,6 +15,7 @@ from offers.forms import OfferForm, CreateUserForm, CustomerForm
 from .models import *
 from .filters import OfferFilter
 from .decorators import unauthenticated_user, allowed_users, admin_only
+from django.utils.translation import gettext as _
 
 
 @login_required(login_url='login')
@@ -153,7 +154,7 @@ def welcome(request):
     myFilter = OfferFilter(request.GET, queryset=offer)
     offer = myFilter.qs
 
-    context = {"offers": offers.objects.all(), "filter": myFilter, "offers": offer}
+    context = {"filter": myFilter, "offers": offer}
     return render(request, "offers/home.html", context)
 
 
@@ -166,11 +167,12 @@ def submitted(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['customer'])
 def offersPage(request):
+    hello = _('hello world')
     offer = offers.objects.all()
     myFilter = OfferFilter(request.GET, queryset=offer)
     offer = myFilter.qs
 
-    context = {"offers": offers.objects.all(), "filter": myFilter, "offers": offer}
+    context = {"filter": myFilter, "offers": offer, "hello": hello}
     return render(request, "offers/offersPage.html", context)
 
 
@@ -193,6 +195,7 @@ def my_offers(request):
     Offer = offers.objects.filter(customer=customer)
     context = {
         'offers': Offer,
+
     }
 
     return render(request, 'offers/my_offers.html', context)

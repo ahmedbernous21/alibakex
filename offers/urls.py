@@ -4,15 +4,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
+app_name = 'alibak'
+
+
 urlpatterns = [
     path('<int:id>', views.detail, name="detail"),
     path('create_order/', views.createOrder, name="create_order"),
     path('update_order/<str:pk>/', views.updateOrder, name="update_order"),
     path('delete_order/<str:pk>/', views.deleteOrder, name="delete_order"),
     path('customer/<str:pk>/', views.Customer, name="customer"),
-    path('welcome', views.welcome, name="welcome"),
+    path('', views.welcome, name="welcome"),
     path('CustomerInfo/<str:pk>/', views.CustomerInfo, name="CustomerInfo"),
-    path('', views.register, name="register"),
+    path('register', views.register, name="register"),
     path('login', views.loginPage, name="login"),
     path('logout', views.LogoutUser, name="logout"),
     path('settings', views.accountSettings, name="settings"),
@@ -36,4 +39,5 @@ urlpatterns = [
     name="password_reset_complete"),
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

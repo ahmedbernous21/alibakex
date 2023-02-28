@@ -1448,14 +1448,15 @@ transform: scale(1.1)
         </div>
 
         <div class="d2 d-inline-flex align-items-center" >
-                     <a class="text-body mr-3" href="{% url 'welcome'%}">Acceuil</a>
+            <-!-
+                     <a class="text-body mr-3" href="{% url 'alibak:welcome'%}">Acceuil</a>
                    {% if request.user.customer.approved %}
                     <a class="text-body mr-3" href="{% url 'my_offers'%}">Tes offres</a>
                     {% else %}
-                    <a class="text-body mr-3" href="{% url 'settings'%}">Paramètres</a>
+                    <a class="text-body mr-3" href="{% url 'alibak:settings'%}">Paramètres</a>
                     {% endif %}
                     <a class="text-body mr-3" href="#footer">Contact</a>
-                    <a class="text-body mr-3 p" href="{% url 'logout' %}" style="text-decoration:none">LOG OUT</a>
+                    <a class="text-body mr-3 p" href="{% url 'alibak:logout' %}" style="text-decoration:none">LOG OUT</a>
 
 
         </div>

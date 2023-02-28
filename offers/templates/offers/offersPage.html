@@ -1,8 +1,9 @@
 
 {%  extends 'offers/main2.html' %}
+{% load i18n %}
 {% block content %}
 {% load static %}
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </style>
 <section id="flex-section" >
 
@@ -48,6 +49,40 @@
 
              </div>
         </section>
+       <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">item</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Language
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+
+            {% for lang in languages %}
+              <li>
+              <a class="dropdown-item" href="/{{ lang.code }}/OffersPage">
+                  {{ lang.name_local }}
+              </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<p style="font-size:80px">{% trans "hello world" %}</p>
 
         <section class="bottom" style="width: 80%;">
     <div class="myflex">
@@ -58,8 +93,9 @@
                     </form>
             <div class="create" style="margin-bottom:-30px; margin-top:10px;">
                         {% if request.user.customer.approved %}
+                        <p>{% trans hello %}</p>
                         <a href="{% url 'create_order' %}" class="btn buttonnn" style="background-color:rgb(26, 26, 255);">Créer un offre</a>
-                {% else %} <a href="{% url 'auth' %}" style="text-decoration: none" class="c-button c-button--gooey"> Créer un offre</a>
+                {% else %} <a href="{% url 'alibak:auth' %}" style="text-decoration: none" class="c-button c-button--gooey"> Créer un offre</a>
                          {% endif %}
                           <div class="c-button__blobs">
                           <div></div>
@@ -90,11 +126,13 @@
 
                                             <td class="td-3"> limit :  {{offer.lowest|floatformat:0}} {% if offer.devise != "baridimob" %} &euro; {% else %} da {% endif %} <br> <br> quantity : {{offer.quantity|floatformat:0}} {% if offer.devise != "baridimob" %} &euro; {% else %} da {% endif %}  </td>
 
-                                            <td class="td-4"> <br> <p >{{offer.price|floatformat:0}} {% if offer.devise != "baridimob" %} da {% else %} &euro; {% endif %} &nbsp&nbsp&nbsp {% if offer.status == "Sell" %} <a href="{% url 'CustomerInfo' offer.id %}" class="btn buttonn" style="background-color:red;">{{offer.status}}</a> {% elif offer.status == "buy" %} <a href="{% url 'CustomerInfo' offer.id %}" class="btn buttonn" style="background-color:green;">{{offer.status}}</a></p> {%endif%} </td>
+                                            <td class="td-4"> <br> <p >{{offer.price|floatformat:0}} {% if offer.devise != "baridimob" %} da {% else %} &euro; {% endif %} &nbsp&nbsp&nbsp {% if offer.status == "Sell" %} <a href="{% url 'alibak:CustomerInfo' offer.id %}" class="btn buttonn" style="background-color:red;">{{offer.status}}</a> {% elif offer.status == "buy" %} <a href="{% url 'alibak:CustomerInfo' offer.id %}" class="btn buttonn" style="background-color:green;">{{offer.status}}</a></p> {%endif%} </td>
                                         </tr>
 
                         </table>
             {%endif%}
             {% endfor %}
         </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
  {% endblock %}
