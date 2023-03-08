@@ -22,10 +22,7 @@ from django.utils.translation import gettext_lazy as _
 
 urlpatterns = [
     path(_('admin/'), admin.site.urls),
+    path('', include('offers.urls'))
 ]
 
-urlpatterns += i18n_patterns(
-    path('', include('offers.urls', namespace='alibak'))
-)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
