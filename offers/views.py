@@ -71,7 +71,7 @@ def accountSettings(request):
         form = CustomerForm(request.POST, request.FILES, instance=customer)
         if form.is_valid():
             form.save()
-            redirect("welcome")
+            return redirect("welcome")
 
     context = {'form': form}
 
