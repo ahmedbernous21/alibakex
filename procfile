@@ -1,1 +1,2 @@
 web: gunicorn alibak.wsgi --log-file -
+web: command-to-start-web-process
