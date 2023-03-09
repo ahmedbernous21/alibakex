@@ -8,7 +8,7 @@ from .models import *
 class CustomerForm(ModelForm):
     class Meta:
         model = Customer
-        fields = '__all__'
+        fields = ['LinkFb', 'phone', 'name', 'Card']
         exclude = ['user']
 
 

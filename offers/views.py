@@ -69,12 +69,9 @@ def accountSettings(request):
 
     if request.method == "POST":
         form = CustomerForm(request.POST, request.FILES, instance=customer)
-        customer.email = request.user.email
         if form.is_valid():
-            face_photo = request.POST.get('image_data')
-            customer.face_picture.save('image.jpeg', ContentFile(face_photo), save=True)
             form.save()
-            return redirect('welcome')
+            redirect("welcome")
 
     context = {'form': form}
 
@@ -167,7 +164,7 @@ def submitted(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['customer'])
 def offersPage(request):
-    hello = _('hello world')
+    hello = 'hello world'
     offer = offers.objects.all()
     myFilter = OfferFilter(request.GET, queryset=offer)
     offer = myFilter.qs

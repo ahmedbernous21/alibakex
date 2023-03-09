@@ -160,65 +160,10 @@ flex-direction:column;
       <br>
 
     </div>
-
-        <script src="{% static 'js/face-api.min.js' %}"></script>
-          <div class="camera">
-          <video id="video" width="340" height="300" autoplay></video>
-          <canvas style="margin-top:-15px;" id="canvas" width="340" height="280" name="image"></canvas>
-              <input type="hidden" name="image_data" id="image_data">
-              <br>
-          <button style="width:50%" id="snap" onclick="takePicture(event)">Take Picture</button>
-          </div><br>
-        <button type="submit" name="submit">SUBMIT</button>
-       </form>
-
-        </div>
-      </div>
-<script>
-const video = document.getElementById('video');
-const canvas = document.getElementById('canvas');
-const canvass = document.querySelector('#canvas');
-const snap = document.getElementById('snap');
-const imageInput = document.querySelector('#image_data');
-const constraints = {
-video: true
-};
-   const imageData = canvass.toDataURL('image/png');
-   imageInput.value = imageData;
-   function takePicture(event) {
-    // prevent the form from being submitted
-    event.preventDefault();
-
-    // your code to take the picture goes here
-}
-async function setupCamera() {
-try {
-   const stream = await navigator.mediaDevices.getUserMedia(constraints);
-   video.srcObject = stream;
-} catch (error) {
-   console.error(error);
-}
-}
-
-setupCamera();
-
-snap.addEventListener('click', () => {
-const context = canvas.getContext('2d');
-context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-// Use face-api.js to process the image
-const img = document.getElementById('canvas');
-faceapi.detectSingleFace(img).then(face => {
-   if (face) {
-      // The user's face was detected, submit the form
-      document.getElementById('registration-form').submit();
-   } else {
-      // The user's face was not detected, display an error message
-      alert('Sorry, we could not detect your face. Please try again.');
-   }
-});
-});
-</script>
+          <br>
+      <button type="submit" name="submit">SUBMIT</button>
+    </div>
+      </div>>
     {%  include 'offers/footer.html' %}
     </body>
 
