@@ -7,15 +7,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import Group
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.core.files.base import ContentFile
-from django.core.files.images import Image
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 from offers.forms import OfferForm, CreateUserForm, CustomerForm
 from .models import *
 from .filters import OfferFilter
 from .decorators import unauthenticated_user, allowed_users, admin_only
-from django.utils.translation import gettext as _
+
 
 
 @login_required(login_url='login')
