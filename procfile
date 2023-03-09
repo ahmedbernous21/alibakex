@@ -1,1 +1,1 @@
-web: gunicorn alibakex.wsgi --log-file -
+web: gunicorn alibak.wsgi --log-file -
