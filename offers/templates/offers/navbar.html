@@ -1306,9 +1306,9 @@ font-size: 16px;
 
 @media (max-width: 500px)
 {
-  .container{
-    display: none;
-  }
+.kok{
+display:none
+}
   .row159{
     display: none ;
   }
@@ -1471,7 +1471,11 @@ transform: scale(1.1)
                     <a class="text-body mr-3" href="{% url 'settings'%}">Paramètres</a>
                     {% endif %}
                     <a class="text-body mr-3" href="#footer">Contact</a>
-                    <a class="text-body mr-3 p" href="{% url 'logout' %}" style="text-decoration:none">LOG OUT</a>
+                    {% if user.is_authenticated %}
+                    <a class="text-body mr-3 p" href="{% url 'logout' %}" style="text-decoration:none;">SIGN UP</a>
+                    {% else %}
+                    <a class="text-body mr-3 p" href="{% url 'register' %}" style="text-decoration:none;  color:black !important;">SIGN UP</a>
+                    {% endif %}
 
             </div>
 

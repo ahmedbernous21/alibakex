@@ -142,8 +142,8 @@ def customer(request, pk_test):
     return render(request, 'offers/customer.html', context)
 
 
-@login_required(login_url='login')
-@admin_only
+
+
 def welcome(request):
     offer = offers.objects.all()
     myFilter = OfferFilter(request.GET, queryset=offer)

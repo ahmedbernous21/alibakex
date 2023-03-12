@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'offers.apps.OffersConfig',
+    'fontawesome_5',
     'website',
     'rooms',
     'django_filters',
