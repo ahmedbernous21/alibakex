@@ -18,6 +18,7 @@ pandas==1.5.2
 Pillow==9.4.0
 pipenv==2022.11.30
 platformdirs==2.6.0
+psycopg2==2.9.5
 PySocks==1.7.1
 python-dateutil==2.8.2
 pytz==2022.7
